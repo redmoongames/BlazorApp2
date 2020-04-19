@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<h1>TOP Movie List</h1>
+
+<p>Anime is a style of computer and hand-draw animation that is commonly linked with Japan. It is incredibly popular all around the world, with legions of hardcore fans. However, if you have ever watched it before, read on to discover the many different reasons why you should.</p>
+
+<MoviesList Movies="movies" />
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@code {
+
+
+    private List<Movie> movies;
+
+    protected override void OnInitialized()
+    {
+        movies = new List<Movie>()
+    {
+            new Movie() { Title = " In/Spectre", ReleaseDate = new DateTime(2020, 1, 11) },
+            new Movie() { Title = "Darwin's Game", ReleaseDate = new DateTime(2020, 01, 05) },
+            new Movie() { Title = "Keep your Hands off Eizouken!", ReleaseDate = new DateTime(2020, 01, 03) },
+            new Movie() { Title = "Somali and the Forest Spirit", ReleaseDate = new DateTime(2020, 01, 09) }
+        };
+    }
+
+
+}

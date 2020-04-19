@@ -1,0 +1,46 @@
+﻿
+<style>
+    .loading {
+        object-fit: none;
+        object-position: 50% 50%;
+        width: 75px;
+        height: 75px;
+    }
+
+    .movie-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+</style>
+
+
+<h3>MoviesList</h3>
+
+@if (this.Movies == null)
+{
+    <img class="loading" src="https://media1.tenor.com/images/c7cce308690c435002dfedee6889d135/tenor.gif?itemid=15742167" alt="Loading..." />
+}
+else
+{
+    if (this.Movies.Count() == 0)
+    {
+        <p>No movies in the list...</p>
+    }
+    else
+    {
+        <div class="movie-list">
+            <input type="checkbox" @onchange="@(() => displayDelButtons = !displayDelButtons)"/>
+            @for (int i = 0; i < this.Movies.Count(); i++)
+            {
+                <IndividualMovie Movie="this.Movies[i]" DesplayDelete="displayDelButtons"/>
+            }
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public List<Movie> Movies { get; set; }
+    bool displayDelButtons = false;
+}
+

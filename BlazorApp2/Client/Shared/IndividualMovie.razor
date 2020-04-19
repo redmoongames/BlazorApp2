@@ -1,0 +1,99 @@
+﻿<style>
+        .movie-card {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            min-height: 280px;
+            width: 280px;
+            height: auto;
+            padding: 25px;
+            padding-top: 30px;
+            margin: 20px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        .card-shadow {
+            box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.12);
+        }
+
+        .description {
+            text-align: left;
+            font-size: 0.8rem;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: lighter;
+        }
+
+        .card-edit {
+            width: 100%;
+            display: inline-flex;
+        }
+
+        button {
+            border-style: solid;
+            background-color: none;
+            padding: 10px 0;
+            margin: 0 auto;
+            border-radius: 12px;
+            border-color: black;
+            color: black;
+            font-weight: 900;
+            font-size: 10pt;
+        }
+
+            button:hover {
+                border-style: none;
+                background-color: black;
+                color: white;
+            }
+
+        .change {
+            flex-grow: 8;
+            border-color: #838eff;
+            color: #838eff;
+            margin-right: 15px;
+        }
+
+        .change:hover {
+            background-color: #636ee5;
+        }
+
+        .delete {
+            flex-grow: 2;
+            border-color: #ff9c9c;
+            color: #ff9c9c;
+        }
+
+            .delete:hover {
+                background-color: #ff6b6b;
+            }
+</style>
+
+<div class="movie-card card-shadow">
+    <p class="title">@Movie.Title</p>
+    <p class="description">When violent monsters descend upon Earth to destroy humanity, a reluctant young man joins a small squad of pilots under the command of his cold and dictatorial father to drive back the menace using giant machines that seem to have minds of their own.</p>
+    <p>Release date: <b>@Movie.ReleaseDate.ToString("dd / MM / yyyy")</b></p>
+    <div class="card-edit">
+        <button class="change">Edit</button>
+        @if (DesplayDelete)
+        {
+            <button class="delete" @onclick="Delete">Del</button>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Movie Movie { get; set; }
+    [Parameter] public bool DesplayDelete { get; set; } = false;
+
+    void Delete()
+    {
+        Console.WriteLine("Delete");
+    }
+}
